@@ -3,47 +3,79 @@
 
 #include "pch.h"
 #include "BidirectRingList.h"
+#include "Iterator.h"
 #include <iostream>
+#include <algorithm> 
 
 using namespace std;
+
+void printFunction(int data) {  // function:
+	cout << data << '\n';
+}
 
 int main()
 {
 	BidirectRingList<int> list;
 	BidirectRingList<int> secondList;
 
-	list.push(3);
 	list.push(1);
+	list.push(2);
 	list.push(3);
-	list.push(3);
+	list.push(4);
 
 	cout << '\n';
-	list.print();
+		
+	Iterator<int> i = list.end();
 
-	secondList = list;
+	cout << "\n INCREMENT: \n";
 
-	cout << '\n';
-	secondList.print();
+	do {
+		i++;
+		cout << *i << '\n';
+	} while (i != list.end());
 
-	list.remove(3);
+	cout << "\n DECREMENT: \n";
 
-	cout << '\n';
-	list.print();
+	i.toFirst();
+	do {
+		i--;
+		cout << *i << '\n';
+	} while (i != list.begin());
 
 
-	list.remove(3, true);
+	cout << "\n WITH FOREACH: \n";
+	i.forEach(printFunction);
 
-	cout << '\n';
-	list.print();
+
+	std::cout << "\n But real for_each sucks :( \n";
+	for_each(list.begin(), list.end(), printFunction);
+	std::cout << '\n';
+
+
+	//secondList = list;
+
+	//cout << '\n';
+	//secondList.print();
+
+	//list.remove(3);
+
+	//cout << '\n';
+	//list.print();
+
+
+	//list.remove(3, true);
+
+	//cout << '\n';
+	//list.print();
 
 
 
 	//list.print();
 
-	list.clear();
+	//list.clear();
 
-	cout << '\n';
-	list.print();
+	//cout << '\n';
+	//list.print();
 
 }
 
