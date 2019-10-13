@@ -84,6 +84,7 @@ public:
 		return !operator==(iter);
 	};
 
+
 private:
 	typename BidirectRingList<T>::Node *current;
 	typename BidirectRingList<T>::Node *start;

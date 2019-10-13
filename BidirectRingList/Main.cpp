@@ -10,7 +10,7 @@
 using namespace std;
 
 void printFunction(int data) {  // function:
-	cout << data << '\n';
+	cout << data << ", ";
 }
 
 int main()
@@ -18,29 +18,28 @@ int main()
 	BidirectRingList<int> list;
 	BidirectRingList<int> secondList;
 
-	list.push(1);
+	list.push(4);
 	list.push(2);
 	list.push(3);
-	list.push(4);
+	list.push(1);
 
-	cout << '\n';
-		
+
+	list.sort();
+
+	cout << "\n list.print(): \n";
+	list.print();
+
+
 	Iterator<int> i = list.begin();
 
-	//** OK
-	cout << "\n INCREMENT: \n";
+	cout << "\n increment iterator: \n";
 
 	while (i != list.end()) {
 		printFunction(*i);
 		i++;
 	}
 
-	cout << "\n std:for_each \n";
-	for_each(list.begin(), list.end(), printFunction);
-	//**
-
-
-	cout << "\ FROM LAST TO FIRST.. It's not so clear .. ? \n";
+	cout << "\n decrement iterator: \n";
 	i = list.begin();
 
 	do {
@@ -49,32 +48,25 @@ int main()
 	} while (i != list.end());
 
 
+	secondList = list;	
 
-	//secondList = list;	
+	cout << '\n';
+	secondList.print();
 
-	//cout << '\n';
-	//secondList.print();
+	list.remove(3);
 
-	//list.remove(3);
+	cout << '\n';
+	list.print();
 
-	//cout << '\n';
-	//list.print();
+	list.remove(3, true);
 
+	cout << '\n';
+	list.print();
 
-	//list.remove(3, true);
+	list.clear();
 
-	//cout << '\n';
-	//list.print();
-
-
-
-	//list.print();
-
-	//list.clear();
-
-	//cout << '\n';
-	//list.print();
-
+	cout << '\n';
+	list.print();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

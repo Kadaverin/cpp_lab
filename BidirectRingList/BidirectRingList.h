@@ -1,5 +1,7 @@
 #pragma once
+#include "BaseNode.h"
 #include <iostream>
+
 
 using namespace std;
 
@@ -18,9 +20,7 @@ public:
 
 	BidirectRingList(BidirectRingList const& toCopy) { *this = toCopy; };
 
-	struct Node {
-		T data;
-		Node *next;
+	struct Node : BaseNode<T> {
 		Node *prev;
 	};
 
@@ -30,6 +30,16 @@ public:
 
 	Iterator<T> end() {
 		return Iterator<T>(head, true);
+	}
+
+	void forEach(void callback(T)) {
+		auto begin = this->begin();
+		auto end = this->end();
+
+		while (begin != end) {
+			callback(*begin);
+			++begin;
+		}
 	}
 
 	void operator=(BidirectRingList const& toAssign) {
@@ -81,7 +91,7 @@ public:
 		return false;
 	}
 
-	bool remove(T data, bool all) {
+	bool remove(T data, bool allEntries = false) {
 		if (head == nullptr) {
 			return false;
 		}
@@ -94,7 +104,7 @@ public:
 				deleteNode(temp->next);
 				isDeleted = true;
 
-				if (!all) break;
+				if (!allEntries) break;
 			}
 			temp = temp->next;
 		} while (temp->next != head);
@@ -117,18 +127,32 @@ public:
 			return;
 		}
 
+		forEach([](T data) {
+			cout << data << ", ";
+		});
+	}
+
+	void sort() {
+		head->prev->next = nullptr;
+		mergeSort(&head);
+
 		Node *temp = head;
 
-		do {
-			cout << temp->data << ", ";
+		while (temp->next != nullptr) {
+			temp->next->prev = temp;
 			temp = temp->next;
-		} while (temp != head);
+		}
+
+		head->prev = temp;
+		temp->next = head;
 	}
 
 	//void sort();
 private:
 	Node *head;
 	Node *current;
+
+	
 
 	void addAfter(T data, Node* target) {
 		if (head == nullptr) {
