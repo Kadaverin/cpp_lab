@@ -25,34 +25,32 @@ int main()
 
 	cout << '\n';
 		
-	Iterator<int> i = list.end();
+	Iterator<int> i = list.begin();
 
+	//** OK
 	cout << "\n INCREMENT: \n";
 
-	do {
+	while (i != list.end()) {
+		printFunction(*i);
 		i++;
-		cout << *i << '\n';
-	} while (i != list.end());
+	}
 
-	cout << "\n DECREMENT: \n";
+	cout << "\n std:for_each \n";
+	for_each(list.begin(), list.end(), printFunction);
+	//**
 
-	i.toFirst();
+
+	cout << "\ FROM LAST TO FIRST.. It's not so clear .. ? \n";
+	i = list.begin();
+
 	do {
 		i--;
-		cout << *i << '\n';
-	} while (i != list.begin());
+		printFunction(*i);
+	} while (i != list.end());
 
 
-	cout << "\n WITH FOREACH: \n";
-	i.forEach(printFunction);
 
-
-	std::cout << "\n But real for_each sucks :( \n";
-	for_each(list.begin(), list.end(), printFunction);
-	std::cout << '\n';
-
-
-	//secondList = list;
+	//secondList = list;	
 
 	//cout << '\n';
 	//secondList.print();

@@ -29,7 +29,7 @@ public:
 	}
 
 	Iterator<T> end() {
-		return Iterator<T>(head).toLast();
+		return Iterator<T>(head, true);
 	}
 
 	void operator=(BidirectRingList const& toAssign) {
