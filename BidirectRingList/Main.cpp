@@ -9,8 +9,8 @@ using namespace std;
 
 int main()
 {
-	BidirectRingList list;
-	BidirectRingList secondList;
+	BidirectRingList<int> list;
+	BidirectRingList<int> secondList;
 
 	list.push(3);
 	list.push(1);

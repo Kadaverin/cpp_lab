@@ -4,6 +4,7 @@
 template<typename T>
 class Iterator
 {
+public:
 	Iterator(typename BidirectRingList<T>::Node);
 	Iterator(const Iterator<T>&);
 	~Iterator();
@@ -12,5 +13,6 @@ class Iterator
 	bool operator==(const Iterator&) const;
 	bool operator!=(const Iterator&) const;
 
-	private BidirectRingList<T>::Node current;
+private:
+	typename BidirectRingList<T>::Node current;
 };

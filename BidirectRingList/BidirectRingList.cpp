@@ -4,13 +4,19 @@
 
 using namespace std;
 
-BidirectRingList::BidirectRingList() : head{ nullptr }, current{ nullptr } {};
-BidirectRingList::~BidirectRingList() { clear(); }
-BidirectRingList::BidirectRingList(BidirectRingList const& toCopy) {
+template<typename T>
+BidirectRingList<T>::BidirectRingList() : head{ nullptr }, current{ nullptr } {};
+
+template<typename T>
+BidirectRingList<T>::~BidirectRingList() { clear(); }
+
+template<typename T>
+BidirectRingList<T>::BidirectRingList(BidirectRingList const& toCopy) {
 	*this = toCopy;
 };
 
-void BidirectRingList::operator=(BidirectRingList const& toAssign) {
+template<typename T>
+void BidirectRingList<T>::operator=(BidirectRingList const& toAssign) {
 	Node *temp = toAssign.head;
 
 	do {
@@ -19,20 +25,13 @@ void BidirectRingList::operator=(BidirectRingList const& toAssign) {
 	} while (temp != toAssign.head);
 }
 
-BidirectRingList BidirectRingList::operator++() {
-	if (this->current != nullptr) {
-		this->current = this->current->next;
-	}
-
-	return *this;
-}
-
-void BidirectRingList::clear() {
+template<typename T>
+void BidirectRingList<T>::clear() {
 	while (head) deleteNode(head->prev);
 };
 
-
-void BidirectRingList::addOrdered(int data) {
+template<typename T>
+void BidirectRingList<T>::addOrdered(T data) {
 	if (head == nullptr) {
 		addFirst(data);
 		return;
@@ -51,7 +50,8 @@ void BidirectRingList::addOrdered(int data) {
 	addAfter(data, head->prev);
 };
 
-bool BidirectRingList::includes(T data) {
+template<typename T>
+bool BidirectRingList<T>::includes(T data) {
 	if (head == nullptr) {
 		return false;
 	}	
@@ -68,7 +68,8 @@ bool BidirectRingList::includes(T data) {
 	return false;
 }
 
-bool BidirectRingList::remove(T data, bool all) {
+template<typename T>
+bool BidirectRingList<T>::remove(T data, bool all) {
 	if (head == nullptr) {
 		return false;
 	}
@@ -89,18 +90,19 @@ bool BidirectRingList::remove(T data, bool all) {
 	return isDeleted;
 }
 
-
-void BidirectRingList::push(T data) {
+template<typename T>
+void BidirectRingList<T>::push(T data) {
 	addAfter(data, head ? head->prev : nullptr);
 }
 
-void BidirectRingList::unshift(T data) {
+template<typename T>
+void BidirectRingList<T>::unshift(T data) {
 	push(data);
 	head = head->prev;
 }
 
-
-void BidirectRingList::addAfter(T data, Node* target) {
+template<typename T>
+void BidirectRingList<T>::addAfter(T data, Node* target) {
 	if (head == nullptr) {
 		addFirst(data);
 		return;
@@ -116,14 +118,16 @@ void BidirectRingList::addAfter(T data, Node* target) {
 	newNode->prev = target;
 }
 
-void BidirectRingList::addFirst(T data) {
+template<typename T>
+void BidirectRingList<T>::addFirst(T data) {
 	head = new Node;
 	head->data = data;
 	head->next = head;
 	head->prev = head;
 }
 
-void BidirectRingList::deleteNode(Node* target) {
+template<typename T>
+void BidirectRingList<T>::deleteNode(Node* target) {
 	if (target == head) {
 		deleteHead();
 	} else {
@@ -134,7 +138,8 @@ void BidirectRingList::deleteNode(Node* target) {
 	}
 }
 
-void BidirectRingList::deleteHead() {
+template<typename T>
+void BidirectRingList<T>::deleteHead() {
 	if (head->next == head) {
 		delete head;
 		head = nullptr;
@@ -151,7 +156,8 @@ void BidirectRingList::deleteHead() {
 }
 
 
-void BidirectRingList::print() {
+template<typename T>
+void BidirectRingList<T>::print() {
 	if (head == nullptr) {
 		cout << "No data";
 		return;
@@ -164,6 +170,3 @@ void BidirectRingList::print() {
 		temp = temp->next;
 	} while (temp != head);
 }
-
-
-

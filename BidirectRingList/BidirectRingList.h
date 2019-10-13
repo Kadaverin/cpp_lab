@@ -5,7 +5,7 @@ template<typename T>
 class BidirectRingList
 {
 public:
-	friend class Iterator;
+	friend Iterator;
 
 	BidirectRingList();
 	~BidirectRingList();
