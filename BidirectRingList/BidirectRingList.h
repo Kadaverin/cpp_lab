@@ -137,7 +137,7 @@ public:
 	void sort() {
 		head->prev->next = nullptr;
 
-		mergeSort<T>(&head);
+		mergeSort<Node>(&head);
 
 		Node *temp = head;
 
@@ -153,8 +153,6 @@ public:
 private:
 	Node *head;
 	Node *current;
-
-	
 
 	void addAfter(T data, Node* target) {
 		if (head == nullptr) {

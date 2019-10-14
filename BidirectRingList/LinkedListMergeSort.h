@@ -1,16 +1,16 @@
 #include "pch.h"
-#include "BaseNode.h"
+
 
 using namespace std;
 
-template<typename T>
-void mergeSort(BaseNode<T>**);
+template<typename Node>
+void mergeSort(Node**);
 
-template<typename T>
-void splitList(BaseNode<T>*, BaseNode<T>**, BaseNode<T>**);
+template<typename Node>
+void splitList(Node*, Node**, Node**);
 
-template<typename T>
-BaseNode<T>* mergeList(BaseNode<T>*, BaseNode<T>*);
+template<typename Node>
+Node* mergeList(Node*, Node*);
 
 
 

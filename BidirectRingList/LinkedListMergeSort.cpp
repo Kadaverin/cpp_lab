@@ -1,12 +1,11 @@
 #include "pch.h"
-#include "BaseNode.h"
 
 using namespace std;
 
-template<typename T>
-void mergeSort(BaseNode<T>** start) {
-	BaseNode<T>* head = *start;
-	BaseNode<T>* ll1, *ll2;
+template<typename Node>
+void mergeSort(Node** start) {
+	Node* head = *start;
+	Node* ll1, *ll2;
 
 	if (head == nullptr || head->next == nullptr) {
 		return;
@@ -20,11 +19,11 @@ void mergeSort(BaseNode<T>** start) {
 	return;
 }
 
-template<typename T>
-void splitList(BaseNode<T>* start, BaseNode<T>** ll1, BaseNode<T>** ll2) {
+template<typename Node>
+void splitList(Node* start, Node** ll1, Node** ll2) {
 
-	BaseNode<T>* slow = start;
-	BaseNode<T>* fast = start->next;
+	Node* slow = start;
+	Node* fast = start->next;
 	while (fast != nullptr) {
 		fast = fast->next;
 		if (fast != nullptr) {
@@ -38,9 +37,9 @@ void splitList(BaseNode<T>* start, BaseNode<T>** ll1, BaseNode<T>** ll2) {
 	slow->next = nullptr;
 }
 
-template<typename T>
-BaseNode<T>* mergeList(BaseNode<T>* ll1, BaseNode<T>* ll2) {
-	BaseNode<T>* newhead = nullptr;
+template<typename Node>
+Node* mergeList(Node* ll1, Node* ll2) {
+	Node* newhead = nullptr;
 	if (ll1 == nullptr)
 		return ll2;
 
