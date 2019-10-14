@@ -1,12 +1,14 @@
 #pragma once
+
+#include "LinkedListMergeSort.h"
 #include "BaseNode.h"
 #include <iostream>
-
 
 using namespace std;
 
 template<typename T>
 class Iterator;
+
 
 template<typename T>
 class BidirectRingList
@@ -20,7 +22,7 @@ public:
 
 	BidirectRingList(BidirectRingList const& toCopy) { *this = toCopy; };
 
-	struct Node : BaseNode<T> {
+	struct Node : public BaseNode<T> {
 		Node *prev;
 	};
 
@@ -134,7 +136,8 @@ public:
 
 	void sort() {
 		head->prev->next = nullptr;
-		mergeSort(&head);
+
+		mergeSort<T>(&head);
 
 		Node *temp = head;
 
@@ -147,7 +150,6 @@ public:
 		temp->next = head;
 	}
 
-	//void sort();
 private:
 	Node *head;
 	Node *current;

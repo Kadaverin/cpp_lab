@@ -35,8 +35,11 @@
     <ClCompile Include="BaseNode.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedListMergeSortFunctor.h">
+    <ClCompile Include="LinkedListMergeSort.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedListMergeSort.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
