@@ -3,7 +3,7 @@
 using namespace std;
 
 template<typename Node>
-inline void mergeSort(Node** start) {
+void mergeSort(Node** start) {
 	Node* head = *start;
 	Node* ll1, *ll2;
 
@@ -20,7 +20,7 @@ inline void mergeSort(Node** start) {
 }
 
 template<typename Node>
-inline void splitList(Node* start, Node** ll1, Node** ll2) {
+void splitList(Node* start, Node** ll1, Node** ll2) {
 
 	Node* slow = start;
 	Node* fast = start->next;
@@ -38,7 +38,7 @@ inline void splitList(Node* start, Node** ll1, Node** ll2) {
 }
 
 template<typename Node>
-inline Node* mergeList(Node* ll1, Node* ll2) {
+Node* mergeList(Node* ll1, Node* ll2) {
 	Node* newhead = nullptr;
 	if (ll1 == nullptr)
 		return ll2;
