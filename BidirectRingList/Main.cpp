@@ -1,6 +1,3 @@
-// BidirectRingList.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include "pch.h"
 #include "BidirectRingList.h"
 #include "Iterator.h"
@@ -9,7 +6,7 @@
 
 using namespace std;
 
-void printFunction(int data) {  // function:
+void printFunction(int data) {
 	cout << data << ", ";
 }
 

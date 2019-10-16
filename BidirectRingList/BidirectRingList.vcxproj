@@ -156,8 +156,6 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseNode.h" />
-    <ClCompile Include="LinkedListMergeSort.cpp" />
     <ClCompile Include="LinkedListMergeSort.h" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">

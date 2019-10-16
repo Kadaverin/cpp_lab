@@ -1,7 +1,6 @@
 #pragma once
 
 #include "LinkedListMergeSort.h"
-#include "BaseNode.h"
 #include <iostream>
 
 using namespace std;
@@ -22,7 +21,9 @@ public:
 
 	BidirectRingList(BidirectRingList const& toCopy) { *this = toCopy; };
 
-	struct Node : public BaseNode<T> {
+	struct Node {
+		T data;
+		Node *next;
 		Node *prev;
 	};
 
